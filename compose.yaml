@@ -11,12 +11,14 @@ services:
         ipv4_address: 172.20.0.5
     restart: always
     environment:
-      MYSQL_HOST: db
-      MYSQL_DB: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      DB_HOST: db
+      DB_NAME: ${MYSQL_DATABASE}
+      DB_USER: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
     depends_on:
       - db
+    ports:
+      - "8091:5000"
 
   db:
     image: mysql:8
